@@ -1,5 +1,7 @@
 #include <iostream>
+#include <tabulate/table.hpp>
 using namespace std;
+using namespace tabulate;
 
 bool valPrima(int x) {
     if (x < 2) return false;
@@ -26,29 +28,25 @@ void swapArr(int *arr, int x) {
 
 int main() {
     int arr[7];
+    int arrAwal[7];
     int valid = 0, angka = 2; 
 
     while (valid < 7) {
         if (valPrima(angka)) {
             arr[valid] = angka; //isi kalau prima doang
+            arrAwal[valid] = angka; 
             valid++;
         }
         angka++;
     }
-
-    //sebelum
-    cout << "Array awal\t: " << endl;
-    for (int i = 0; i < 7; i++) {
-        cout << arr[i] << " ";
-    }
-
-    
-    //habis di swap
     swapArr(arr, 7);
-    cout << "\nBalik array\t: " << endl;
-    for (int i = 0; i < 7; i++) {
-        cout << arr[i] << " ";
+    Table t;
+    t.add_row({"Array awal", "Balik array"});
+    for (int i=0; i<7; i++){
+        t.add_row({to_string(arrAwal[i]), to_string(arr[i])});
     }
+    cout << t << endl;
+
 
     return 0;
 }
