@@ -26,7 +26,8 @@ void swapArr(int *arr, int x) {
     }
 }
 
-int main() {
+int main() 
+{
     int arr[7];
     int arrAwal[7];
     int valid = 0, angka = 2; 
@@ -41,12 +42,22 @@ int main() {
     }
     swapArr(arr, 7);
     Table t;
-    t.add_row({"Array awal", "Balik array"});
-    for (int i=0; i<7; i++){
-        t.add_row({to_string(arrAwal[i]), to_string(arr[i])});
-    }
+    string rowAwal[8];
+    rowAwal[0] = "Array awal";
+    for (int i = 0; i < 7; i++)
+        rowAwal[i + 1] = to_string(arrAwal[i]);
+    t.add_row({rowAwal, rowAwal + 8});
+
+    string rowBalik[8];
+    rowBalik[0] = "Balik array";
+    for (int i = 0; i < 7; i++)
+        rowBalik[i + 1] = to_string(arr[i]);
+    t.add_row({rowBalik, rowBalik + 8});
+    t[0][0].format().font_color(Color::red);
+    t[1][0].format().font_color(Color::red);
     cout << t << endl;
-
-
     return 0;
 }
+
+
+
