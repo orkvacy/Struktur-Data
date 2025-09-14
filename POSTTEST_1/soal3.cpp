@@ -1,10 +1,9 @@
 #include <iostream>
-#include <limits>
 using namespace std;
 
 struct mahasiswa {
     string nama;
-    char nim[14];
+    string nim;
     double ipk;
 };
 
@@ -31,10 +30,10 @@ int main() {
         cout << "Nama : ";
         getline(cin, mhs[i].nama);
         cout << "NIM  : ";
-        cin.getline(mhs[i].nim, 14);
+        getline(cin, mhs[i].nim);
         cout << "IPK  : ";
         cin >> mhs[i].ipk;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.ignore();
         cout << endl;
     }
 
