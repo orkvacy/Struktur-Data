@@ -3,7 +3,9 @@ using namespace std;
 
 bool valPrima(int x) {
     if (x < 2) return false;
-    for (int i = 2; i * i <= x; i++) {
+    if (x == 2) return true;        // Langsung return true untuk 2
+    if (x % 2 == 0) return false;   // Eliminasi bilangan genap > 2
+    for (int i = 3; i * i <= x; i += 2) {  // Hanya cek bilangan ganjil
         if (x % i == 0) return false;
     }
     return true;
